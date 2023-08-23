@@ -1,0 +1,8 @@
+[
+    {
+        "name": "RCE",
+        "category": "Test",
+        "impact": "high",
+        "description": "testest"
+    }
+]

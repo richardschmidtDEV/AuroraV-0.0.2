@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Upgrade",
+        "mode": "Base",
+        "commands": [
+            "sudo sh -c 'apt update && apt upgrade'"
+            
+        ]
+    }
+]

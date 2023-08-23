@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Default",
+        "terminal_bg": [0.0, 0.0, 0.0, 0.8],
+        "terminal_text": [1.0, 1.0, 1.0, 1.0],
+        "main_window_bg": [0.0, 0.0, 0.0, 0.8],
+        "main_window_text": [1.0, 1.0, 1.0, 1.0],
+        "sidebar_bg": [0.0, 0.0, 0.0, 0.8],
+        "sidebar_text": [1.0, 1.0, 1.0, 1.0]
+    },
+    {
+        "name": "Dark",
+        "terminal_bg": [0.1, 0.1, 0.1, 0.9],
+        "terminal_text": [1.0, 1.0, 1.0, 0.8],
+        "main_window_bg": [0.1, 0.1, 0.1, 0.9],
+        "main_window_text": [1.0, 1.0, 1.0, 0.8],
+        "sidebar_bg": [0.1, 0.1, 0.1, 0.9],
+        "sidebar_text": [1.0, 1.0, 1.0, 0.8]
+    },
+    {
+        "name": "Light",
+        "terminal_bg": [1.0, 1.0, 1.0, 0.8],
+        "terminal_text": [0.0, 0.0, 0.0, 1.0],
+        "main_window_bg": [1.0, 1.0, 1.0, 0.8],
+        "main_window_text": [0.0, 0.0, 0.0, 1.0],
+        "sidebar_bg": [1.0, 1.0, 1.0, 0.8],
+        "sidebar_text": [0.0, 0.0, 0.0, 1.0]
+    },
+    {
+        "name": "Blue",
+        "terminal_bg": [0.0, 0.0, 0.2, 0.8],
+        "terminal_text": [1.0, 1.0, 1.0, 1.0],
+        "main_window_bg": [0.0, 0.0, 0.2, 0.8],
+        "main_window_text": [1.0, 1.0, 1.0, 1.0],
+        "sidebar_bg": [0.0, 0.0, 0.2, 0.8],
+        "sidebar_text": [1.0, 1.0, 1.0, 1.0]
+    },
+    {
+        "name": "Green",
+        "terminal_bg": [0.0, 0.2, 0.0, 0.8],
+        "terminal_text": [1.0, 1.0, 1.0, 1.0],
+        "main_window_bg": [0.0, 0.2, 0.0, 0.8],
+        "main_window_text": [1.0, 1.0, 1.0, 1.0],
+        "sidebar_bg": [0.0, 0.2, 0.0, 0.8],
+        "sidebar_text": [1.0, 1.0, 1.0, 1.0]
+    },
+    {
+        "name": "Custom",
+        "terminal_bg": [0.0, 0.2, 0.2, 0.8],
+        "terminal_text": [0.0, 1, 0.0, 1.0],
+        "main_window_bg": [0.2, 0.2, 0.2, 0.8],
+        "main_window_text": [0.8, 0.8, 0.8, 1.0],
+        "sidebar_bg": [0.2, 0.2, 0.2, 0.8],
+        "sidebar_text": [0.8, 0.8, 0.8, 1.0]
+    }
+]

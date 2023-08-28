@@ -1,3 +1,5 @@
+![aurora](aurora.png)
+
 # Aurora
 
 This is a Prototype off a project of mine which is currently under development.

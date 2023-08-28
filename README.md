@@ -1,4 +1,4 @@
-![aurora](aurora.png)
+![Aurora](Aurora.png)
 
 # Aurora
 

@@ -1,4 +1,4 @@
-![Aurora](Aurora.png)
+![Alt text](/Aurora.png?raw=true "Optional Title")
 
 # Aurora
 

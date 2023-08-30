@@ -17,13 +17,8 @@ class MyNotebook(Gtk.Notebook):
             .notebook-background {
                 background-color: rgba(0, 0, 0, 0.5); /* Adjust the color and alpha as needed */
             }
-             .combobox-custom {
-        min-height: 30px;
-    }
         """
         css_provider.load_from_data(css.encode())
-        self.combobox.get_style_context().add_class("combobox-custom")
-
 
         screen = Gdk.Screen.get_default()
         style_context = Gtk.StyleContext()
@@ -33,8 +28,7 @@ class MyNotebook(Gtk.Notebook):
         self.set_show_border(False)
         self.set_border_width(0)
         
-        self.get_style_context().add_class("notebook-background")  # Apply the new class here
-
+        self.get_style_context().add_class("notebook-background") 
 
 
 class TerminalTab(Gtk.Box):

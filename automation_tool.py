@@ -29,10 +29,6 @@ class AutomationWindow(Gtk.Window):
         self.commands_list = Gtk.ListBox()
         vbox.pack_start(self.commands_list, True, True, 0)
 
-        start_button = Gtk.Button(label="Start Selected Automation")
-        start_button.connect("clicked", self.on_start_button_clicked)
-        vbox.pack_start(start_button, False, False, 0)
-
         create_button = Gtk.Button(label="Create Command Chain")
         create_button.connect("clicked", self.on_create_button_clicked)
         vbox.pack_start(create_button, False, False, 0)

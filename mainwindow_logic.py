@@ -156,7 +156,7 @@ class MainWindowLogic:
         print("Settings button clicked")
 
     def area_draw(self, widget, cr):
-        cr.set_source_rgba(0.6, 0.0, 0.0, 0.8)
+        cr.set_source_rgba(0.0, 0.0, 0.0, 0.8)
         cr.set_operator(cairo.OPERATOR_SOURCE)
         cr.paint()
         cr.set_operator(cairo.OPERATOR_OVER)

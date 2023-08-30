@@ -2,30 +2,36 @@ import os
 from gi.repository import Gtk, Vte, Gio, Gdk, GdkPixbuf, GLib
 import shutil
 from left_sidebar import LeftSidebar
-from terminal_tab import TerminalTab
+from terminal_tab import MyNotebook, TerminalTab
 
 from image_terminal import ImageTerminal
 from automation_tool import AutomationWindow
 from mainwindow_logic import MainWindowLogic
 import subprocess
 import threading
+import theme
 
 
 class MainWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="Terminal")
         self.path_entry = Gtk.Entry()
+      
         self.logic = MainWindowLogic(self)
         self.connect_signals()
         self.load_css()
         self.setup_window()
         self.theme_combo = self.create_theme_combo()  # Add this line to create the theme ComboBox
+  
+        
+        self.connect("destroy", Gtk.main_quit)
 
         self.create_top_right_box()
         self.create_main_layout()
         self.notebook = Gtk.Notebook()
         self.vbox.pack_end(self.notebook, True, True, 0)
         self.results_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)  # Create the results_box container
+     
         
     def create_script_button(self):
         icon_path = "target.png"  # Update with your local PNG file path
@@ -66,7 +72,7 @@ class MainWindow(Gtk.Window):
 
 
     def setup_window(self):
-        self.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 100.0, 0.0, 0.8))
+        self.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 0.0, 0.8))
         self.set_border_width(1)
         self.set_default_size(800, 600)
         self.color_picker_window = None
@@ -88,10 +94,12 @@ class MainWindow(Gtk.Window):
 
         scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolled_window.add(self.result_box)
-
+        scrolled_window.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 1.0, 0.1))
         self.result_text_view = Gtk.TextView()
         self.result_text_view.set_editable(False)
+        self.result_text_view.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 1.0, 0.1))
         self.result_box.pack_start(self.result_text_view, True, True, 0)
+        self.result_box.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 1.0, 0.1))
 
         # Set a minimum height for the result box
         self.result_box.set_size_request(-1, 350)  # -1 means no minimum width, 150 means a minimum height of 150px
@@ -113,7 +121,7 @@ class MainWindow(Gtk.Window):
             button = Gtk.Button.new_with_label(title)
             button.connect("clicked", self.on_download_button_clicked, path)
             self.results_box.pack_start(button, False, False, 0)
-
+            self.result_box.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 1.0, 0.1))
         self.results_box.show_all()
 
     def parse_results(self, results):
@@ -186,8 +194,8 @@ class MainWindow(Gtk.Window):
         top_right_box = self.create_button_box()
 
         # Sidebar button
-        self.sidebar_toggle_button = self.create_button('menu.png', self.logic.on_sidebar_button_clicked)
-        top_right_box.pack_start(self.sidebar_toggle_button, False, False, 0)
+        #self.sidebar_toggle_button = self.create_button('menu.png', self.logic.on_sidebar_button_clicked)
+        #top_right_box.pack_start(self.sidebar_toggle_button, False, False, 0)
 
         # Add button
         add_button = self.create_button('add.png', self.logic.on_add_button_clicked)
@@ -256,6 +264,22 @@ class MainWindow(Gtk.Window):
         script_button = self.create_script_button()
         top_right_box.pack_start(script_button, False, False, 0)
 
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size('automation.png', 24, 24)
+        imageSL2 = Gtk.Image.new_from_pixbuf(pixbuf)
+
+        button2 = Gtk.Button(label="")
+      
+        button2.set_name('custom_image_button')
+        button2.set_image(imageSL2)
+
+     
+        button2.connect("clicked", self.on_automation_button_clicked)  # Connect the button to the automation function
+        top_right_box.pack_start(button2, False, False, 0)
+
+
+    def on_automation_button_clicked(self, widget):
+        self.main_window.on_automation_button_clicked(widget)  # Call the main window's automation function
+
     def on_theme_combo_changed(self, combo):
         active_iter = combo.get_active_iter()
         if active_iter is not None:
@@ -304,7 +328,7 @@ class MainWindow(Gtk.Window):
 
     def create_main_layout(self):
         self.hpaned = Gtk.Paned()
-        self.hpaned.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 0.0, 0.1))
+        self.hpaned.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 1.0, 0.1))
 
         self.vbox.pack_end(self.hpaned, True, True, 0)
         self.sidebar = LeftSidebar(self)
@@ -312,7 +336,7 @@ class MainWindow(Gtk.Window):
 
         # Create a vertical paned widget for result area
         self.vpaned = Gtk.Paned(orientation=Gtk.Orientation.VERTICAL)
-        self.vpaned.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 0.0, 0.1))
+        self.vpaned.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0.0, 0.0, 1.0, 0.1))
 
         self.hpaned.pack2(self.vpaned, True, False)
 
